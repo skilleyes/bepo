@@ -5,6 +5,8 @@ My linux custom bepo layout, for french and english, optimised for programming.
 
 1. Replace fr file in /usr/share/X11/xkb/symbols with the file from this repo
 
+`sudo cp ~/Downloads/fr /usr/share/X11/xkb/symbols/fr`
+
 2. Delete .xkm files in /var/lib/xkb
 
 3. Reboot 
