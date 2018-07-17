@@ -13,3 +13,8 @@ My linux custom bepo layout, for french and english, optimised for programming.
 
 3. Reboot 
 
+### Install instructions for Mac OS
+
+1. Unzip the bundle to `~/Library/Keyboard Layouts`
+
+2. Go to `Settings -> Keyboard -> Input Sources -> + -> Others` and add the Keyboard !
