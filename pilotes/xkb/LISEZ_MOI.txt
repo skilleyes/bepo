@@ -1,0 +1,32 @@
+Disposition de clavier bépo, version 1.0
+http://www.bepo.fr/
+
+
+Description
+-----------
+
+Ce paquetage contient la disposition de clavier bépo, optimisée pour le français, créée par la communauté sur http://www.bepo.fr/.
+Les fichiers de ce paquetage sont destinés à une utilisation en mode utilisateur (sans les droit d'administrateur) sur un système possédant xkbcomp.
+
+
+Utilisation
+-----------
+
+La commande
+  
+  xkbcomp -w0 bepo.xkb $DISPLAY
+  
+bascule le clavier en clavier bépo. Sur les systèmes utilisant une version de xorg antérieure à la 7.0, le fichier à utiliser est « bepo-xorglegacy.xkb ».
+Pour disposer des nouvelles touches mortes introduites par le clavier bépo, le contenu du fichier XCompose doit être ajouté au fichier ~/.XCompose de l'utilisateur, par exemple avec la commande :
+
+  cat XCompose >> ~/.XCompose
+  
+Il est possible de revenir au clavier français par défaut (AZERTY) avec la commande
+
+  setxkbmap fr
+
+
+Licence
+-------
+
+La configuration de clavier bépo est distribuée sous la double licence CC-SA-BY/GFDL. Le texte exact de ces licences peut être consulté dans les fichiers CC-SA-BY.txt et GFDL.txt.

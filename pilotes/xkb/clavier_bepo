@@ -1,0 +1,53 @@
+#!/bin/sh -x
+#
+# passage en clavier fr-dvorak-bépo
+#
+# Copyright (C) 2008 Gaëtan Lehmann <gaetan.lehmann@jouy.inra.fr>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+
+set -ev
+ulimit -c 0
+
+# ajoute des chemin dans le PATH pour être sûr de trouver xkbcomp.
+# pour opensolaris
+export PATH=$PATH:/usr/X11/lib/X11/xkb/
+
+# quel répertoire temporaire utiliser ?
+if [ -n "$TMP" ]; then
+  tmp="$TMP"
+elif [ -n "$TMPDIR" ]; then
+  tmp="$TMPDIR"
+else
+  tmp=/tmp
+fi
+dump="$tmp/$USER-dump.xkb"
+dir=`dirname $0`
+
+# quel logiciel de dialogue ?
+dialog=echo
+which xmessage && dialog="xmessage -button OK:0,Retour:1"
+which kdialog && dialog="kdialog --title fr-dvorak-bépo --warningcontinuecancel"
+which zenity && dialog="zenity --question --title fr-dvorak-bépo --text"
+
+# dump la config actuelle si elle n'existe pas, pour être sur de ne pas faire
+# une sauvegarde de notre config si l'utilisateur a relancé ce script alors
+# qu'il était déjà en bépo.
+if [ ! -e "$dump" ]; then
+  xkbcomp $DISPLAY -xkb "$dump"
+fi
+# et utilise la notre à la place
+xkbcomp -w0 "$dir/bepo.xkb" $DISPLAY || xkbcomp -w0 "$dir/bepo-xorglegacy.xkb" $DISPLAY
+
+
+if `$dialog "Vous utilisez maintenant la disposition de clavier fr-dvorak-bépo."` ; then
+  echo "Utilisez 'clavier_precedent' pour restaurer la configuration de clavier."
+else
+  # restaurons le clavier...
+  dir=`dirname $0`
+  $dir/clavier_precedent
+fi

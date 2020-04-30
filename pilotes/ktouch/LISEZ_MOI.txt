@@ -1,0 +1,30 @@
+Disposition de bépo, version 1.0
+http://www.bepo.fr/
+
+
+Description
+-----------
+
+Ce paquetage contient la disposition de clavier bépo, optimisée pour le français, créée par la communauté sur http://www.bepo.r/.
+Les fichiers de ce paquetage sont destinés à être utilisé avec ktouch (http://ktouch.sourceforge.net/).
+
+
+Utilisation
+-----------
+
+Ktouch ne contient pas la disposition de clavier bépo. Il faut donc la rajouter manuellement. Les commandes 
+
+  mkdir -p ~/.kde/share/apps/ktouch/
+  cp bepo.keyboard ~/.kde/share/apps/ktouch/
+  
+peuvent-être utilisées pour installer la disposition pour un utilisateur, ou
+
+  cp bepo.keyboard /usr/share/apps/ktouch/
+  
+pour tous les utilisateurs (nécessite les droits d'administrateur).
+
+
+Licence
+-------
+
+La configuration de clavier bépo est distribuée sous la double licence CC-SA-BY/GFDL. Le texte exact de ces licences peut être consulté dans les fichiers CC-SA-BY.txt et GFDL.txt.

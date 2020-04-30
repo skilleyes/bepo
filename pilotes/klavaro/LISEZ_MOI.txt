@@ -1,0 +1,25 @@
+Disposition de clavier bépo, version 1.0
+http://www.bepo.fr/
+
+
+Description
+-----------
+
+Ce paquetage contient la disposition de clavier bépo, optimisée pour le français, créée par la communauté sur http://www.bepo.fr/.
+Les fichiers de ce paquetage sont destinés à être utilisé avec klavaro (http://klavaro.sourceforge.net/).
+
+
+Utilisation
+-----------
+
+Klavaro ne contient pas la disposition de clavier bépo. Il faut donc la rajouter manuellement. La commande 
+
+  cp bepo.kbd ~/.klavaro
+  
+peut-être utilisée sous linux pour installer la disposition pour un utilisateur.
+
+
+Licence
+-------
+
+La configuration de clavier bépo est distribuée sous la double licence CC-SA-BY/GFDL. Le texte exact de ces licences peut être consulté dans les fichiers CC-SA-BY.txt et GFDL.txt.

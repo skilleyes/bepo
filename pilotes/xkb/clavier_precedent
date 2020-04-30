@@ -1,0 +1,45 @@
+#!/bin/sh -x
+#
+# restauration du clavier
+#
+# Copyright (C) 2008 Gaëtan Lehmann <gaetan.lehmann@jouy.inra.fr>
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+
+set -ev
+ulimit -c 0
+
+# ajoute des chemin dans le PATH pour être sûr de trouver xkbcomp.
+# pour opensolaris
+export PATH=$PATH:/usr/X11/lib/X11/xkb/
+
+# quel répertoire temporaire utiliser ?
+if [ -n "$TMP" ]; then
+  tmp="$TMP"
+elif [ -n "$TMPDIR" ]; then
+  tmp="$TMPDIR"
+else
+  tmp=/tmp
+fi
+dump="$tmp/$USER-dump.xkb"
+
+# quel logiciel de dialogue ?
+dialog=echo
+which xmessage && dialog="xmessage"
+which kdialog && dialog="kdialog --title fr-dvorak-bépo --msgbox"
+which zenity && dialog="zenity --info --title fr-dvorak-bépo --text"
+
+
+if [ -e "$dump" ]; then
+  xkbcomp -w0 "$dump" $DISPLAY
+  rm -f "$dump"
+  $dialog  "La configuration de clavier a été restaurée."
+else
+  # pas de fichier - on repasse en azerty
+  setxkbmap fr
+  $dialog  "Impossible de trouver la sauvegarde. Le clavier est maintenant configuré en AZERTY."
+fi
