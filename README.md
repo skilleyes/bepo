@@ -8,12 +8,15 @@ My linux custom bepo layout, for french and english, optimised for programming.
     ```
     sudo mv /usr/share/X11/xkb/symbols/fr /usr/share/X11/xkb/symbols/fr.bak
     ```
+1. Checkout the `Amony` branch of this repo
 
 1. Copy the `pilotes/configGenerator/results/layout-1.1.xkb` into the `/usr/share/X11/xkb/symbols/fr` file.
     Overwrite the `"French (Bepo, ergonomic, Dvorak way)"` section.
 
     ```
     sudo vim /usr/share/X11/xkb/symbols/fr
+    ```
+    
 1. Run the following to take changes into account:
 
     ```
